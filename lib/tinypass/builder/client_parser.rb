@@ -1,6 +1,6 @@
 module Tinypass
   class ClientParser
-    DATA_BLOCK_START_SIGNATURE = /{\w\w\w}/
+    DATA_BLOCK_START_SIGNATURE = /\{\w\w\w\}/
 
     def parse_access_tokens(message)
       tokens = []
@@ -41,7 +41,7 @@ module Tinypass
         @encoder = SecureEncoder.new(Tinypass.private_key)
       end
 
-      block.sub!(/^{...}/, '')
+      block.sub!(/^\{...\}/, '')
       block
     end
   end
